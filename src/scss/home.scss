@@ -1,0 +1,930 @@
+//========================================================================================================================================================
+//  PAGE
+//========================================================================================================================================================
+
+.page {
+  &__main {
+  }
+
+  &__creative {
+  }
+
+  &__services {
+  }
+
+  &__speciality {
+  }
+
+  &__project {
+  }
+
+  &__clients {
+  }
+
+  &__blog {
+  }
+}
+
+//========================================================================================================================================================
+//  MAIN
+//========================================================================================================================================================
+
+.main {
+  background: $accentColor;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include adaptiveValue("gap", 30, 10, 2, 1920, 800);
+    @include adaptiveValue("gap", 10, 10, 3, 800);
+    @include adaptiveValue("padding-top", 100, 40, 0, 1200, 320);
+    @include adaptiveValue("padding-bottom", 145, 55, 0, 1200, 320);
+  }
+
+  &__text-section {
+    color: $whiteColor;
+    flex-shrink: 0;
+    @include adaptiveValue("flex-basis", 500, 320, 0, 1200, 320);
+
+    @media (max-width: $mobile) {
+      flex: 0 1 toRem(380);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+  }
+  
+  &__title {
+    @include adaptiveValue("font-size", 48, 28, 0);
+    font-weight: 700;
+    letter-spacing: 0.48;
+    line-height: 1.2;
+
+    translate: 0 120%;
+    opacity: 0;
+    transition: all 0.3s;
+
+    &._watcher-view {
+      translate: 0 0;
+      opacity: 1;
+      transition: all 0.3s;
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  &__sub-title {
+    @include adaptiveValue("font-size", 24, 18, 0);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.24;
+    @include adaptiveValue("margin-top", 30, 15, 0, 1200, 320);
+    @include adaptiveValue("margin-bottom", 80, 30, 0, 1200, 320);
+
+    translate: 0 120%;
+    opacity: 0;
+    transition: all 0.3s ease 0.1s;
+
+    &._watcher-view {
+      translate: 0 0;
+      opacity: 1;
+      transition: all 0.3s;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    @include adaptiveValue("gap", 40, 10);
+
+    & > * {
+      scale: 0;
+      transition: scale 0.3s;
+    }
+
+    @for $i from 1 through 2 {
+      &._watcher-view > :nth-child(#{$i}) {
+        $delay: $i * 0.1;
+        scale: 1;
+        transition: scale 0.5s ease #{$delay + s};
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    @include adaptiveValue("gap", 8, 5);
+    @include adaptiveValue("font-size", 22, 16);
+    line-height: 1.22;
+    position: relative;
+    @include adaptiveValue("padding-inline", 25, 10, 0, 1200, 320);
+    white-space: nowrap;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      @include adaptiveValue("height", 1, 3);
+      transition: all 0.3s;
+      max-width: 0;
+      bottom: -20%;
+      width: 100%;
+      background: $whiteColor;
+    }
+
+    &::after {
+      left: 50%;
+    }
+    &::before {
+      right: 50%;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        &::before,
+        &::after {
+          max-width: 50%;
+        }
+      }
+    }
+  }
+
+  &__button-icon {
+    color: $activeColor;
+  }
+
+  
+  &__picture {
+    translate: 90% 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    &._watcher-view {
+      translate: 0 0;
+      opacity: 1;
+      transition: all 0.3s ease 0.2s;
+    }
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
+}
+
+@keyframes scale-shake {
+  0% { scale: 0; }
+  50% { scale: 1.2; }
+  75% { scale: 1; }
+  80% { scale: 0.95; }
+  100% { scale: 1; }
+}
+
+//========================================================================================================================================================
+//  CREATIVE
+//========================================================================================================================================================
+
+.creative {
+  &__container {
+    display: flex;
+    align-items: end;
+    @include adaptiveValue("column-gap", 80, 25, 0, 1200, 920);
+    @include adaptiveValue("padding-block", 80, 30, 0, 1200, 320);
+
+    @media (max-width: $pc) {
+      align-items: center;
+    }
+
+    @media (max-width: $mobile) {
+      flex-wrap: wrap-reverse;
+      justify-content: center;
+    }
+  }
+
+  &__picture {
+    flex: 0 1 toRem(599.98);
+
+    @media (max-width: $mobile) {
+      max-width: toRem(460);
+    }
+
+    img {
+      max-width: 100%;
+      translate: -90% 0;
+      opacity: 0;
+      transition: all 0.3s ease;
+  
+      &._watcher-view {
+        translate: 0 0;
+        opacity: 1;
+        transition: all 0.3s ease 0.2s;
+      }
+    }
+  }
+
+  &__text-section {
+    flex: 1 1 toRem(669.98);
+
+    @media (max-width: $mobile) {
+      max-width: toRem(460);
+      text-align: center;
+      margin-bottom: toRem(10);
+    }
+  }
+
+  &__title {
+    @media (max-width: em(919.98)) {
+      span {
+        display: block;
+      }
+    }
+
+    @media (max-width: $mobile) {
+      span {
+        display: inline;
+      }
+    }
+  }
+
+  &__sub-title {
+  }
+
+  &__text {
+    @include adaptiveValue("padding-block", 28, 12, 0, 1200, 320);
+    @include adaptiveValue("font-size", 18, 16);
+    font-weight: 500;
+    line-height: 1.85;
+    text-transform: capitalize;
+
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    &._watcher-view {
+      opacity: 1;
+      transition: all 0.3s ease-in-out 0.1s;
+    }
+  }
+}
+
+//========================================================================================================================================================
+//  SERVICES
+//========================================================================================================================================================
+
+.services {
+  &__container {
+    @include adaptiveValue("padding-top", 80, 30, 0, 1200, 320);
+    @include adaptiveValue("padding-bottom", 20, 10, 0, 1200, 320);
+  }
+
+  &__title {
+  }
+
+  &__sub-title {
+  }
+
+  &__articles {
+    @include adaptiveValue("margin-top", 60, 30, 0, 768);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include adaptiveValue("row-gap", 40, 20, 0, 768);
+    @include adaptiveValue("column-gap", 20, 10, 0, 768);
+
+    @media (max-width:$mobile){
+      gap: toRem(15) toRem(10);
+    }
+  }
+  
+
+  &__card {
+    flex: 1 1 toRem(320);
+    border-radius: 40px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    @include adaptiveValue("padding-block", 30, 15, 0, 768);
+    @include adaptiveValue("padding-inline", 20, 10, 0, 768);
+    cursor: pointer;
+
+    @media (max-width: $tablet) {
+      &:nth-child(5) {
+        display: none;
+      }
+    }
+
+    @media (max-width: $mobile) {
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  scale: 0;
+  transition: all 0.3s;
+
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) > [class*="__logo"] {
+      color: nth($servicesColors, $i);
+
+      &::after {
+        background-color: nth($servicesColors, $i);
+        opacity: 0.2;
+      }
+    }
+  }
+
+  &._watcher-view {
+    scale: 1;
+    transition: scale 0.3s ease 0.2s;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: $accentColor;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    transition: all 0.4s;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $accentColor;
+      color: $whiteColor;
+      box-shadow: 0px 4px 35px 0px rgba(84, 94, 225, 0.55);
+      transition:
+        all 0.3s,
+        box-shadow 0.3s 0.1s;
+
+      &::after {
+        width: 200%;
+      }
+
+      & > [class*="__logo"] {
+        color: $whiteColor;
+        transition: color 0.3s;
+
+        &::after {
+          background-color: $whiteColor;
+          opacity: 0.2;
+          transition: all 0.3s;
+        }
+      }
+
+      & > * {
+        color: $whiteColor;
+        transition: color 0.3s;
+      }
+    }
+  }
+
+  &__logo {
+    @include adaptiveValue("font-size", 50, 30);
+    @include adaptiveValue("width", 80, 60);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+
+    span {
+      position: relative;
+      z-index: 2;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      translate: -50% -50%;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      z-index: 1;
+    }
+  }
+
+  &__title {
+    @include adaptiveValue("margin-top", 26, 15);
+    @include adaptiveValue("margin-bottom", 30, 18);
+    @include adaptiveValue("font-size", 22, 18);
+    line-height: 1.2;
+    color: $titleColor;
+    font-weight: 700;
+    transition: color 0.3s 0.2s;
+    z-index: 2;
+  }
+
+  &__text {
+    @include adaptiveValue("font-size", 18, 16);
+    font-weight: 500;
+    line-height: 1.66;
+    transition: color 0.3s 0.2s;
+    z-index: 2;
+  }
+}
+
+//========================================================================================================================================================
+//  SPECIALITY
+//========================================================================================================================================================
+
+.speciality {
+  &._watcher-view {
+    background: url(@img/speciality/picture.png) no-repeat;
+    background-position-x: calc(50% + toRem(380));
+    background-position-y: 50%;
+  }
+
+  @media (max-width: $tablet) {
+    background-position-x: calc(50% + toRem(320));
+    @include adaptiveValue("background-position-y", 120, 50, 3, 992, 768);
+  }
+
+  @media (max-width: $mobile) {
+    background-position: 50% 100%;
+  }
+
+  @media (max-width: $mobile) {
+    background: none;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    @include adaptiveValue("padding-block", 180, 50, 0, 1200, 768);
+
+    @media (max-width: $mobile) {
+      justify-content: center;
+    }
+  }
+
+  &__text-section {
+    flex: 0 1 toRem(515);
+
+    @media (max-width: $mobile) {
+      flex: 1 1 auto;
+    }
+  }
+
+  &__title {
+    margin-bottom: toRem(70);
+
+    @media (max-width: $mobile) {
+      text-align: center;
+      margin-inline: auto;
+      max-width: toRem(400);
+    }
+  }
+
+  &__list {
+    &._watcher-view {
+      @for $i from 1 through 5 {
+        $d: $i * 0.02;
+        & > li:nth-child(#{$i}) {
+          translate: 0 0;
+          opacity: 1;
+          transition: all 0.15s ease #{$d + s};
+        }
+      }
+    }
+  }
+
+  &__item {
+    translate: -120% 0;
+    opacity: 0;
+    transition: all 0.3s;
+    margin-bottom: toRem(30);
+    @include adaptiveValue("font-size", 18, 16);
+    line-height: 1.66;
+    font-weight: 600;
+    text-transform: capitalize;
+    position: relative;
+    display: flex;
+    align-items: start;
+    padding-left: toRem(40);
+
+    span {
+      aspect-ratio: 1 / 1;
+      width: toRem(25);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #878eea;
+      color: $whiteColor;
+      @include adaptiveValue("font-size", 18, 16);
+      top: toRem(5);
+      left: 0;
+      position: absolute;
+    }
+  }
+}
+
+//========================================================================================================================================================
+//  PROJECT
+//========================================================================================================================================================
+
+.project {
+  &__container {
+    @include adaptiveValue("margin-bottom", 180, 50);
+  }
+
+  &__title {
+  }
+
+  &__sub-title {
+  }
+
+  &__navigation {
+    @include adaptiveValue("margin-top", 60, 30, );
+    @include adaptiveValue("margin-bottom", 40, 25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include adaptiveValue("column-gap", 50, 30);
+  }
+
+  &__tab-link {
+    text-transform: capitalize;
+    @include adaptiveValue("font-size", 18, 16);
+    color: #b2b2b2;
+    line-height: 2;
+    transition: color 0.3s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: rgba(86, 95, 225, 0.7);
+      }
+    }
+
+    &_active {
+      color: #545ee1;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 30px;
+
+    &._watcher-view > * {
+      animation: scale-card 0.5s ease-in-out 0s 1 normal forwards;
+    }
+  }
+
+  &__item {
+    flex: 1 1 toRem(360);
+    max-height: toRem(440);
+    border-radius: 20px;
+    overflow: hidden;
+    scale: 0;
+    box-shadow: 0px 4px 15px 0px rgba(15, 19, 77, 0.272);
+    cursor: pointer;
+
+    @keyframes scale-card {
+      0% { scale: 0; }
+      50% { scale: 1.1; }
+      75% { scale: 1; }
+      80% { scale: 0.95; }
+      100% { scale: 1; }
+    }
+
+    &:first-child,
+    &:last-child {
+      flex: 1 1 toRem(720);
+    }
+
+    @media (any-hover: hover) {
+      &:hover > img {
+        scale: 1.1;
+      }
+    }
+
+    img {
+      transition: scale 0.3s;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      object-position: center;
+      object-fit: cover;
+    }
+  }
+}
+
+//========================================================================================================================================================
+//  CLIENTS
+//========================================================================================================================================================
+
+.clients {
+  background:
+    url(@img/clients/quote.svg) no-repeat 45% toRem(45),
+    $primaryColor;
+
+  @media (max-width: $mobile) {
+    background-position: calc(100% - 35px) 50%;
+  }
+
+  &__container {
+    @include adaptiveValue("padding-top", 32, 16, 0, 1200);
+    @include adaptiveValue("padding-bottom", 54, 32, 0, 1200);
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    @include adaptiveValue("column-gap", 20, 0, 0, 1200, 920);
+
+    @media (max-width: $mobile) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__text-section {
+    flex: 0 1 toRem(410);
+
+    @media (max-width: $mobile) {
+      @include adaptiveValue("max-width", 460, 300, 0, 768, 320);
+      margin-bottom: toRem(10);
+      text-align: center;
+    }
+  }
+
+  &__title {
+    letter-spacing: -1.5px;
+  }
+
+  &__sub-title {
+    padding-right: toRem(10);
+  }
+
+  &__slider-section {
+    flex: 1 1 toRem(410);
+    position: relative;
+  }
+
+  &__slider {
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: end;
+    @include adaptiveValue("margin-bottom", 70, 60);
+    min-height: toRem(370);
+    overflow: hidden;
+
+    // right: 100%;
+    // opacity: 0;
+    // transition: all 0.5s;
+
+    // &._watcher-view {
+    //   right: 0;
+    //   opacity: 1;
+    // }
+
+    @media (max-width: $tablet) {
+      min-height: toRem(355);
+    }
+
+    @media (max-width: $mobile) {
+      justify-content: center;
+      min-height: toRem(340);
+    }
+  }
+
+  &__wrapper {
+  }
+
+  &__slide {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    right: 90%;
+    opacity: 0;
+    transition: all 0.5s;
+
+    &._watcher-view {
+      right: 0;
+      opacity: 1;
+    }
+  }
+
+  .swiper {
+  }
+
+  .swiper-wrapper {
+  }
+
+  .swiper-slide {
+    &__wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include adaptiveValue("padding", 30, 10, 0, 1200);
+      @include adaptiveValue("padding-left", 20, 7, 0, 1200);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0px 6px 25px 0px rgba(0, 0, 0, 0.25);
+      @include adaptiveValue("column-gap", 30, 10, 0, 1200);
+      max-width: toRem(455);
+    }
+  }
+
+  .swiper-slide-active,
+  .swiper-slide-prev {
+    opacity: 0.5;
+    translate: 0 0;
+    transition: all 0.3s;
+  }
+
+  .swiper-slide-next {
+    opacity: 1;
+    translate: toRem(-75) 0;
+    transition: all 0.3s;
+    margin-bottom: toRem(150);
+
+    @media (max-width: $tablet) {
+      translate: 0 0;
+    }
+  }
+
+  .swiper-slide {
+    &__text-section {
+    }
+
+    &__name {
+      @include adaptiveValue("font-size", 22, 18, 0, 1200);
+      color: $titleColor;
+      line-height: 1.35;
+      @include adaptiveValue("margin-bottom", 15, 5, 0, 768, 320);
+    }
+
+    &__message {
+      @include adaptiveValue("font-size", 18, 14, 0, 768);
+      color: #b2b2b2;
+      line-height: 1.5;
+      text-transform: capitalize;
+      min-width: toRem(175);
+    }
+
+    &__avatar {
+      aspect-ratio: 1 / 1;
+      flex: 0 1 toRem(92);
+    }
+  }
+
+  &-swiper-pagination {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    left: 50%;
+    translate: -50% 10px;
+    align-items: center;
+    justify-content: center;
+    gap: toRem(15);
+
+    @media (max-width: $tablet) {
+      translate: -50% 0;
+    }
+  }
+}
+
+//========================================================================================================================================================
+//  BLOG
+//========================================================================================================================================================
+
+.blog {
+  &__container {
+    @include adaptiveValue("padding-block", 155, 85, 0, 1200);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__title {
+  }
+
+  &__sub-title {
+  }
+
+  &__slider {
+  }
+
+  &__wrapper {
+  }
+
+  &__slide {
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    @include adaptiveValue("margin-top", 80, 40, 0, 1200);
+    scale: 0;
+    transition: all 0.4s;
+
+    &._watcher-view {
+      scale: 1;
+      transition: all 0.4s;
+    }
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    position: relative;
+    transform: translate3d(0px, 0, 0);
+  }
+
+  .swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    transition-property: transform;
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      object-fit: cover;
+    }
+
+    &__title {
+      color: #191919;
+      @include adaptiveValue("font-size", 26, 18);
+      font-weight: 600;
+      line-height: 1.4;
+
+      @media (max-width: $mobile) {
+        text-align: center;
+      }
+    }
+  }
+
+  &-swiper-pagination {
+    @include adaptiveValue("margin-top", 80, 40, 0, 1200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: toRem(15);
+  }
+}
+
+//========================================================================================================================================================
+
+
+.swiper-pagination._watcher-view {
+  @for $i from 1 through 10 {
+    & > *:nth-child(#{$i}) {
+      $delay: $i *0.05;
+      transform: 0 0;
+      transition: all 0.5s ease #{$delay + s};
+    }
+  }
+}
+
+.swiper-pagination-bullet {
+  aspect-ratio: 1 / 1;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #c6cafb;
+  cursor: pointer;
+  transition: color 0.3s, all 0.8s ease;
+  transform: 0 120%;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $primaryColor;
+    }
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $accentColor;
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $accentColor;
+    }
+  }
+}

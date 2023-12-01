@@ -1,0 +1,1 @@
+console.log([2,5,1,76,32].sort((a, b) => a - b));

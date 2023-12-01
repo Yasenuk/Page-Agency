@@ -1,0 +1,105 @@
+// Заголовки, загальні БЕМ блоки та інше...
+
+.button {
+  border-radius: toRem(10);
+  @include adaptiveValue("padding-block", 24, 10, 0, 1200, 320);
+  @include adaptiveValue("padding-inline", 60, 20, 0, 1200, 320);
+  background: $whiteColor;
+  @include adaptiveValue("font-size", 24, 16);
+  line-height: 1.2;
+  color: $activeColor;
+  letter-spacing: 0.24;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+
+  span {
+    position: relative;
+    z-index: 5;
+  }
+
+  &::before,&::after {
+    content:'';
+    position: absolute;
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    background-color: $activeColor;
+    border-radius: 20px;
+    transform-origin: 50%;
+    transition: all 0.3s, color 0.2s 0.2s;
+    top: 50%;
+  }
+
+  &::before {
+    left: 49%;
+    translate: 150% -50%;
+    rotate: 45deg;
+  }
+
+  &::after {
+    right: 49%;
+    translate: -150% -50%;
+    rotate: 45deg;
+  }
+
+  @media (any-hover: hover){
+    &:hover{
+      color: $whiteColor;
+      
+      &::before,&::after{
+        transition: rotate 0.2s 0.15s, translate 0.2s;
+        translate: 0 -50%;
+        rotate: 0deg;
+      }
+    }
+  }
+}
+
+.title {
+  color: $titleColor;
+  
+  &_center {
+    text-align: center;
+  }
+
+  &_white {
+    color: $whiteColor;
+  }
+
+  h2 {
+    font-weight: 700;
+    @include adaptiveValue("font-size", 48, 32);
+    line-height: 1.2;
+    text-transform: capitalize;
+    translate: 0 120%;
+    opacity: 0;
+    transition: all 0.3s;
+
+    &._watcher-view {
+      translate: 0 0;
+      opacity: 1;
+      transition: all 0.5s;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: toRem(10);
+    }
+  }
+
+  & > p {
+    translate: 0 120%;
+    opacity: 0;
+    transition: all 0.3s;
+
+    &._watcher-view {
+      translate: 0 0;
+      opacity: 1;
+      transition: all 0.3s ease 0.1s;
+    }
+
+    @include adaptiveValue("font-size", 18, 16);
+    line-height: 2;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+}
