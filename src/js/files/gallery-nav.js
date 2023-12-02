@@ -1,4 +1,5 @@
 const tabLinks = document.getElementsByClassName('project__tab-link');
+let fileType = 'png';
 
 for (const tab in tabLinks) {
   if (Object.hasOwnProperty.call(tabLinks, tab)) {
@@ -20,11 +21,11 @@ const initGallery = (sortType) => {
     let galleryItem = new Image();
     let wrap = document.createElement('div');
     wrap.className = 'project__item';
-
+    
     if (sortType == 'all') {
       const category = categories[~~(Math.random() * categories.length)];
-      galleryItem.src = `../../img/project/${category}/0${i}.png`;
-    } else galleryItem.src = `../../img/project/${sortType}/0${i}.png`;
+      galleryItem.src = `img/project/${category}/0${i}.${fileType}`;
+    } else galleryItem.src = `img/project/${sortType}/0${i}.${fileType}`;
     
     galleryItem.alt = `Picture ${i}`;
     wrap.append(galleryItem);

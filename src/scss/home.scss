@@ -448,25 +448,6 @@
 //========================================================================================================================================================
 
 .speciality {
-  &._watcher-view {
-    background: url(@img/speciality/picture.png) no-repeat;
-    background-position-x: calc(50% + toRem(380));
-    background-position-y: 50%;
-  }
-
-  @media (max-width: $tablet) {
-    background-position-x: calc(50% + toRem(320));
-    @include adaptiveValue("background-position-y", 120, 50, 3, 992, 768);
-  }
-
-  @media (max-width: $mobile) {
-    background-position: 50% 100%;
-  }
-
-  @media (max-width: $mobile) {
-    background: none;
-  }
-
   &__container {
     display: flex;
     align-items: center;
@@ -480,7 +461,9 @@
   }
 
   &__text-section {
-    flex: 0 1 toRem(515);
+    // flex: 0 1 toRem(515);
+    flex-shrink: 0;
+    @include adaptiveValue("flex-basis", 500, 320, 0, 1200, 320);
 
     @media (max-width: $mobile) {
       flex: 1 1 auto;
@@ -537,6 +520,22 @@
       top: toRem(5);
       left: 0;
       position: absolute;
+    }
+  }
+
+  &__picture {
+    translate: 20% 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    &._watcher-view {
+      translate: 0 0;
+      opacity: 1;
+      transition: all 0.3s ease 0.2s;
+    }
+
+    @media (max-width: $mobile) {
+      display: none;
     }
   }
 }
